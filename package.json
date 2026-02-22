@@ -1,0 +1,35 @@
+{
+  "name": "@metyatech/skill-code-quality-setup",
+  "version": "1.0.0",
+  "description": "Agent skill for setting up code quality tools",
+  "type": "module",
+  "main": "SKILL.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/metyatech/skill-code-quality-setup.git"
+  },
+  "keywords": [
+    "agent",
+    "skill",
+    "code-quality",
+    "lint",
+    "format"
+  ],
+  "author": "metyatech",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "SKILL.md",
+    "README.md",
+    "LICENSE"
+  ],
+  "devDependencies": {
+    "markdownlint-cli": "^0.44.0"
+  },
+  "scripts": {
+    "lint": "markdownlint **/*.md",
+    "verify": "npm run lint"
+  }
+}
