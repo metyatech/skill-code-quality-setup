@@ -28,6 +28,9 @@
   "devDependencies": {
     "markdownlint-cli": "^0.44.0"
   },
+  "overrides": {
+    "glob": ">=10.6.0"
+  },
   "scripts": {
     "lint": "markdownlint **/*.md",
     "verify": "npm run lint"
