@@ -26,6 +26,7 @@
     "LICENSE"
   ],
   "devDependencies": {
+    "husky": "^9.1.7",
     "markdownlint-cli": "^0.44.0"
   },
   "overrides": {
@@ -33,6 +34,7 @@
   },
   "scripts": {
     "lint": "markdownlint **/*.md",
-    "verify": "npm run lint"
+    "verify": "npm run lint",
+    "prepare": "husky"
   }
 }
