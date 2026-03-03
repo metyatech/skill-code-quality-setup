@@ -27,14 +27,25 @@
   ],
   "devDependencies": {
     "husky": "^9.1.7",
-    "markdownlint-cli": "^0.44.0"
+    "markdownlint-cli": "^0.47.0",
+    "prettier": "^3.5.2"
   },
   "overrides": {
-    "glob": ">=10.6.0"
+    "glob": ">=10.6.0",
+    "minimatch": ">=10.2.4"
   },
   "scripts": {
+    "format": "prettier --write \"**/*.{md,json}\"",
+    "format:check": "prettier --check \"**/*.{md,json}\"",
     "lint": "markdownlint **/*.md",
-    "verify": "npm run lint",
+    "verify": "npm run format:check && npm run lint && npm audit",
     "prepare": "husky"
+  },
+  "prettier": {
+    "semi": true,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "es5",
+    "printWidth": 100
   }
 }

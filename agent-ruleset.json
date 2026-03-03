@@ -1,8 +1,6 @@
 {
   "source": "github:metyatech/agent-rules@HEAD",
-  "domains": [
-    "node"
-  ],
+  "domains": ["node"],
   "extra": [],
   "claude": {
     "enabled": true,
