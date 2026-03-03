@@ -1,0 +1,23 @@
+{
+  "name": "metyatech--skill-code-quality-setup",
+  "version": "1.0.0",
+  "description": "Agent skill for setting up code quality tools in repositories. Provides standard toolchain specifications for formatters, linters, type checkers, and dependency scanners across 13+ languages.",
+  "main": "index.js",
+  "scripts": {
+    "format": "prettier --write \"**/*.{md,json}\"",
+    "format:check": "prettier --check \"**/*.{md,json}\"",
+    "lint": "markdownlint \"**/*.md\"",
+    "verify": "npm run format:check && npm run lint && npm audit"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "markdownlint-cli": "^0.47.0",
+    "prettier": "^3.8.1"
+  },
+  "overrides": {
+    "minimatch": "10.2.4"
+  }
+}

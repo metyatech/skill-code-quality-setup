@@ -22,15 +22,28 @@ npx skills add metyatech/skill-code-quality-setup
 
 ### Claude Code
 
-```
+```text
 /code-quality-setup
 ```
 
 ### Codex
 
-```
+```powershell
 $code-quality-setup
 ```
+
+## Development
+
+### Prerequisites
+
+- Node.js 20+
+
+### Commands
+
+- `npm install`: Install dependencies
+- `npm run format`: Format files with Prettier
+- `npm run lint`: Lint Markdown files
+- `npm run verify`: Run all checks (format check, lint, audit)
 
 ## License
 
