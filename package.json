@@ -34,7 +34,8 @@
   },
   "scripts": {
     "lint": "markdownlint **/*.md",
-    "verify": "npm run lint",
+    "test": "node --test test/validate-skill.test.js",
+    "verify": "npm run lint && npm test",
     "prepare": "husky"
   }
 }
