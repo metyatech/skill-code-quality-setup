@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.2] - 2026-03-19
+
+### Added
+- Added Dependabot configuration for npm and github-actions.
+- Added CodeQL analysis workflow for security scanning.
+- Initialized `task-tracker` for persistent task management.
+- Added `.threads.jsonl` to `.gitignore` to ensure thread context remains local.
+
 ## [1.0.1] - 2026-02-23
 
 ### Added
