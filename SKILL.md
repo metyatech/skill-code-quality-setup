@@ -5,6 +5,32 @@ description: Use when setting up or configuring code quality tools (formatters, 
 
 # Code quality setup
 
+## Formatter automation model
+
+The repository formatter runs across three layers (obligation:
+`engineering-standards`):
+
+1. Editor/agent edit flows format in write mode immediately after
+   creating or modifying formatter-managed files.
+2. Pre-commit hooks format changed files in write mode and stage
+   the result.
+3. CI runs formatter checks in check-only mode and fails on drift,
+   without writing, committing, or otherwise mutating the repo.
+
+## GitHub Actions runtime currency
+
+Keeping JavaScript actions on GitHub's current GA Node major
+(obligation: `engineering-standards`) uses this migration
+procedure:
+
+- During a window where the runner default is an older major, set
+  GitHub's documented workflow-scope opt-in variable. For the
+  Node 20 to Node 24 migration, set
+  `FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"` under top-level
+  workflow `env`.
+- Once the newer major becomes the runner default, remove the
+  opt-in variable in the same change set that updates the workflow.
+
 ## Per-language toolchain
 
 Use the standard toolchain for each language in the repository.
