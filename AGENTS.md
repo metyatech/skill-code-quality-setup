@@ -12,25 +12,22 @@
 - Before applying any rule updates, present the planned changes first with an ANSI-colored diff-style preview, ask for explicit approval, then make the edits.
 - These tool rules live in tools/tool-rules.md in the compose-agentsmd repository; do not duplicate them in other rule modules.
 
-Source: github:metyatech/agent-rules@HEAD/rules/domains/node/module-system.md
+Source: github:metyatech/agent-rules@HEAD/rules/domains/skill/repository.md
 
-# Node module system (ESM)
+# Skill Repository Rules
 
-- Default to TypeScript (.ts/.tsx); use JavaScript only for tool-required config
-  files.
-- Always set "type": "module" in package.json.
-- Prefer ESM with .js extensions for JavaScript config/scripts (e.g.,
-  next.config.js as ESM).
-
-Source: github:metyatech/agent-rules@HEAD/rules/domains/node/npm-packages.md
-
-# Node package publishing
-
-- For scoped npm packages, set publishConfig.access = "public".
-- Set files to constrain the published contents.
-- If a clean npm install is insufficient, use prepare (or equivalent) to build.
-
-## Verification
-
-- Use npm pack --dry-run to inspect the package contents.
-- Run npm test when tests exist.
+- A skill MUST follow the Agent Skills open standard.
+- `SKILL.md` frontmatter MUST contain only `name` and `description`.
+- `name` MUST be lowercase alphanumeric with hyphens, at most 64 characters.
+- `description` MUST explain trigger conditions.
+- `SKILL.md` MUST be platform-agnostic and use intent-level wording.
+- Platform-specific examples MUST live in `README.md`.
+- `SKILL.md` and `README.md` SHOULD be in English.
+- Skill instructions MUST be concise and action-oriented.
+- A skill MUST NOT duplicate AGENTS.md global rules.
+- Each skill MUST live in its own `metyatech/skill-<name>` repository with `SKILL.md` at the root.
+- Each skill repository MUST include a LICENSE file.
+- Skill repositories SHOULD use the MIT license unless the user specifies otherwise.
+- Skill repositories MUST be public unless the user explicitly asks for a private skill.
+- The GitHub repository is the canonical source of truth for a skill.
+- The agent MUST NOT edit installed copies under `~/.agents/skills/<name>`.
