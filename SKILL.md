@@ -1,6 +1,6 @@
 ---
 name: code-quality-setup
-description: Use when setting up or configuring code quality tools (formatters, linters, type checkers, dependency scanners) for a repository. Also use when adding visual accessibility automation or security baseline scanning. Do not use for general coding or when tools are already configured.
+description: Use when setting up, configuring, designing, changing, auditing, or optimizing code quality tools (formatters, linters, type checkers, dependency scanners) or CI usage for a repository, even when quality tools already exist. Also use when adding visual accessibility automation or security baseline scanning. Do not use for general coding.
 ---
 
 # Code quality setup
@@ -30,6 +30,56 @@ procedure:
   workflow `env`.
 - Once the newer major becomes the runner default, remove the
   opt-in variable in the same change set that updates the workflow.
+
+## CI cost optimization
+
+Procedure for the CI cost obligation in `engineering-standards`:
+
+1. Establish required checks, target environments, branch protection and release
+   gates. Inventory workflows, triggers, jobs, attempts, and verification commands.
+2. Read actual job durations, run counts, conclusions and billing data if
+   accessible. Use current official pricing, billing granularity and included
+   allowance; distinguish wall-clock latency from aggregate billable usage.
+   Forecast account-wide monthly consumption, including other repositories.
+   If data is incomplete, label estimates, assumptions, and unverified scope;
+   never treat missing usage as zero or claim allowance compliance without evidence.
+3. Identify duplicate checks, setup and dependency installs, redundant triggers,
+   and expensive jobs. Prefer compatible lower-cost runners, lockfile-keyed
+   dependency caches when beneficial, safe cancellation of superseded runs,
+   and impact-based selection only with conservative fallback for unknown impact.
+4. Profile slow tests and remove unnecessary waits, process launches or fixture
+   setup without changing their assertions or isolation. Retain native OS
+   verification for OS-dependent behavior; use isolated runners where needed.
+5. Compare before/after verification inventory, environments, executed and
+   skipped cases, and defect-detection capability. Confirm mandatory checks
+   cannot be silently skipped or marked successful without execution.
+6. Measure the resulting aggregate billable time and projected monthly usage.
+   If the forecast exceeds the allowance, propose further safe reductions;
+   obtain user approval before adopting paid usage. Do not change billing
+   settings or retry billing-blocked jobs as a workaround.
+
+```mermaid
+flowchart TD
+  A[CI create/change/audit] --> B[Inventory required gates and actual usage]
+  B --> C{Usage evidence complete?}
+  C -->|No| D[Label estimates and missing evidence]
+  C -->|Yes| E[Forecast account-wide cost]
+  D --> E
+  E --> F[Optimize redundant work, runners, triggers, slow tests]
+  F --> G{Coverage and mandatory gates preserved?}
+  G -->|No or uncertain| H[Reject change or verify conservatively]
+  G -->|Yes| I[Measure and forecast]
+  I --> J{Within allowance with evidence?}
+  J -->|Yes| K[Report verified outcome]
+  J -->|No or unknown| L[Report limitation and further safe options; paid usage only with explicit approval]
+```
+
+Documentation contract only (not a new implementation/API):
+
+```ts
+type UsageEvidence = { actualBillableUsage: number | null; projectedMonthlyUsage: number | null; complete: boolean; assumptions: string[]; unverifiedScope: string[] };
+type VerificationEvidence = { requiredGatesPreserved: boolean; targetEnvironmentsPreserved: boolean; executedAndSkippedCompared: boolean; detectionPreserved: boolean };
+```
 
 ## Per-language toolchain
 

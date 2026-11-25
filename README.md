@@ -11,6 +11,7 @@ This skill provides comprehensive guidance for agents to establish and maintain 
 - **Per-language toolchain**: Recommended formatters, linters, type checkers, and dependency scanners.
 - **Visual accessibility**: Automation for route discovery and contrast checks.
 - **Security baseline**: SCA, secret scanning, and CodeQL integration.
+- **CI cost optimization**: Usage measurement, forecasting, and preserving required verification.
 
 ## Supported languages
 
@@ -36,6 +37,7 @@ Use this skill when:
 
 - Setting up a new repository.
 - Auditing existing code quality tools.
+- Designing, changing, auditing, or optimizing CI, even when quality tooling exists.
 - Adding security or accessibility checks to a project.
 
 ## Development
